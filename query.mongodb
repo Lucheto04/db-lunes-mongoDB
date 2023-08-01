@@ -1,0 +1,52 @@
+use("filtro_lunes");
+db.Sucursal.insertMany([
+    {
+        _id: 1, 
+        nombre: 'Sucursal A',
+        direccion: 'Calle Principal 123', 
+        telefono: '1111111111',
+        automoviles: [{
+            _id: 1, 
+            Marca: 'Toyota', 
+            Modelo: 'Corolla', 
+            Anio: 2021, 
+            Tipo: 'Sedan', 
+            Capacidad: 5, 
+            Precio_Diario: 50.00,
+            Cantidad_Disponible: 3
+        }]
+    },
+    {
+        _id: 1, 
+        nombre: 'Ana', 
+        apellido: 'Gomez', 
+        DNI: '123456789', 
+        direccion: 'Calle 111', 
+        telefono: '1111111111', 
+        cargo: 'Gerente',
+        automoviles: [{
+            _id: 2, 
+            nombre: 'Luis', 
+            apellido: 'Rodriguez', 
+            DNI: '987654321', 
+            direccion: 'Avenida 222', 
+            telefono: '2222222222', 
+            cargo: 'Asistente'
+           },
+           {
+   
+           }
+       ]}
+]);
+
+db.Registro_Devolucion.insertMany([
+
+]);
+
+db.Registro_Entrega.insertMany([
+
+]);
+
+db.Alquiler.insertMany([
+
+]);
