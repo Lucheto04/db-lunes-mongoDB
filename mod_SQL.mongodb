@@ -34,8 +34,8 @@ db.automovil.insertMany([
     {
         _id: 1,
         ID_Automovil: 1,
-        Marca: "Chevrolet Camaro",
-        Modelo: 2022,
+        Marca: "Chevrolet",
+        Modelo: "Camaro",
         Anio: 2021,
         Tipo:"Automovil",
         Capacidad: 4,
@@ -44,8 +44,8 @@ db.automovil.insertMany([
     {
         _id: 2,
         ID_Automovil: 2,
-        Marca: "Mazda 2",
-        Modelo: 2016,
+        Marca: "Mazda",
+        Modelo: "2",
         Anio: 2015,
         Tipo:"Automovil",
         Capacidad: 4,
@@ -54,8 +54,8 @@ db.automovil.insertMany([
     {
         _id: 3,
         ID_Automovil: 3,
-        Marca: "Kia Picanto",
-        Modelo: 2022,
+        Marca: "Kia",
+        Modelo: "Picanto",
         Anio: 2021,
         Tipo:"Automovil",
         Capacidad: 4,
@@ -64,8 +64,8 @@ db.automovil.insertMany([
     {
         _id: 4,
         ID_Automovil: 4,
-        Marca: "Ford Explorer",
-        Modelo: 2015,
+        Marca: "Ford",
+        Modelo: "Explorer",
         Anio: 2014,
         Tipo:"Automovil",
         Capacidad: 6,
@@ -74,8 +74,8 @@ db.automovil.insertMany([
     {
         _id: 5,
         ID_Automovil: 5,
-        Marca: "Chevrolet captiva",
-        Modelo: 2018,
+        Marca: "Chevrolet",
+        Modelo: "captiva",
         Anio: 2017,
         Tipo:"Automovil",
         Capacidad: 4,
@@ -485,8 +485,8 @@ db.getCollection("alquiler").aggregate([
     {    
         $lookup:{
             from: "cliente",
-            localField: "ID_Cliente",
-            foreignField: "ID_Cliente_id",
+            localField: "ID_Cliente_id",
+            foreignField: "ID_Cliente",
             as: "fk_alquiler_cliente"
         }
     },
@@ -494,38 +494,45 @@ db.getCollection("alquiler").aggregate([
         $match: {
           Estado: "activo"
         }
+    },
+    {
+        $project: {
+          "Fecha_Inicio": 0,
+          "Fecha_Fin": 0,
+          "fk_alquiler_cliente._id": 0
+        }
     }
 ]);
 
 /* 5. Mostrar todas las reservas pendientes con los datos del cliente y el automóvil reservado. */
 use("db_prime_pepo");
 db.getCollection("reserva").aggregate([
+    {
+        $match: {
+          Estado: "Apartado"
+        }
+    },
     {    
         $lookup:{
             from: "cliente",
-            localField: "ID_Cliente",
-            foreignField: "ID_Cliente_id",
+            localField: "ID_Cliente_id",
+            foreignField: "ID_Cliente",
             as: "fk_cliente"
         }
     },
     {    
         $lookup:{
             from: "automovil",
-            localField: "ID_Automovil",
-            foreignField: "ID_Automovil_id",
+            localField: "ID_Automovil_id",
+            foreignField: "ID_Automovil",
             as: "fk_automovil"
         }
     },
     {
-        $unwind: "$fk_automovil"
+        $unwind: "$fk_automovil",
     },
     {
         $unwind: "$fk_cliente"
-    },
-    {
-        $match: {
-          Estado: "Apartado"
-        }
     }
 ]);
 
@@ -563,28 +570,52 @@ use("db_prime_pepo");
 db.getCollection("sucursal_automovil").aggregate([
     {    
         $lookup:{
-            from: "automovil",
-            localField: "ID_Automovil_id",
-            foreignField: "ID_Automovil",
-            as: "total"
+            from: "sucursal",
+            localField: "ID_Sucursal_id",
+            foreignField: "ID_Sucursal",
+            as: "fk_sucursal"
         }
     },
     {
+        $unwind: "$fk_sucursal"
+    },
+    {
         $group: {
-            Cargo: "Vendedor"
+          _id: "$fk_sucursal.Nombre",
+          Cantidad_Disponible: {
+            $sum: "$Cantidad_Disponible"
+          }
         }
     }
 ]);
 
 /* 9. Obtener el costo total de un alquiler específico. */
 use("db_prime_pepo");
+db.alquiler.find(
+    { 
+        ID_Alquiler: 2 
+    }, 
+    { 
+        _id: 0, 
+        ID_Cliente_id: 0, 
+        Fecha_Inicio: 0,
+        Fecha_Fin: 0, 
+        Estado: 0  
+    }
+);
 
 /* 10. Listar los clientes con el DNI específico. */
 use("db_prime_pepo");
+db.cliente.find(
+    {
+        DNI: "125356895"
+    }
+);
 
 /* 11. Mostrar todos los automóviles con una capacidad mayor a 5
 personas. */
 use("db_prime_pepo");
+
 
 /* 12. Obtener los detalles del alquiler que tiene fecha de inicio en '2023-07-05'. */
 use("db_prime_pepo");
@@ -606,6 +637,25 @@ use("db_prime_pepo");
 
 /* 16. Listar todos los automóviles ordenados por marca y modelo. */
 use("db_prime_pepo");
+db.automovil.find();
+db.getCollection("automovil").aggregate([
+    {
+        $group: {
+            _id: "$Marca",
+            modelos: {
+                $push: "$$ROOT"
+            }
+        }
+    },
+    {
+        $project: {
+            "modelos._id": 0,
+            "modelos.ID_Automovil": 0,
+            "modelos.Marca": 0
+        }
+    },
+    { $sort: {_id: 1} }
+])
 
 /* 17. Mostrar la cantidad total de automóviles en cada sucursal junto con su dirección. */
 use("db_prime_pepo");
