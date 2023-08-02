@@ -25,4 +25,3 @@ db.Cliente.insertMany([
 db.Empleados.insertMany([
 
 ]);
-
