@@ -221,14 +221,14 @@ db.cliente.insertMany([
         Email:"correo@gmail.com"
     },
 ]);
-
+use("db_prime_pepo");
 db.alquiler.insertMany([
     {
         _id: 1,
         ID_Alquiler: 1,
         ID_Cliente_id: 1,
         ID_Automovil_id: 1,
-        Fecha_Inicio: "2023-07-15",
+        Fecha_Inicio: "2023-07-05",
         Fecha_Fin: "2023-07-20",
         Costo_Total: 1100000,
         Estado: "Finalizado"
@@ -615,14 +615,27 @@ db.cliente.find(
 /* 11. Mostrar todos los automóviles con una capacidad mayor a 5
 personas. */
 use("db_prime_pepo");
-
+db.automovil.find(
+    {
+        Capacidad: {$gt :5}
+    }
+)
 
 /* 12. Obtener los detalles del alquiler que tiene fecha de inicio en '2023-07-05'. */
 use("db_prime_pepo");
-
+db.alquiler.find(
+    {
+        Fecha_Inicio: {$eq:"2023-07-05"}
+    }  
+);
 /* 13. Listar las reservas pendientes realizadas por un cliente
 específico. */
 use("db_prime_pepo");
+db.reserva.find(
+    {
+        ID_Cliente_id: 1
+    }
+)
 
 /* 14. Mostrar los empleados con cargo de "Gerente" o "Asistente". */
 use("db_prime_pepo");
@@ -634,10 +647,48 @@ db.empleado.find(
 /* 15. Obtener los datos de los clientes que realizaron al menos un
 alquiler */
 use("db_prime_pepo");
+db.getCollection("cliente").aggregate([
+    {
+        $project: {
+            nombreCompleto : { $concat: ["$Nombre", " ", "$Apellido"]},
+            DNI: 1,
+            Direccion : 1,
+
+        }
+    },
+    {
+        $lookup: {
+          from: "alquiler",
+          localField: "_id",
+          foreignField: "ID_Cliente_id",
+          as: "alquileres" 
+        }
+    },
+    {
+        $lookup: {
+          from: "resgistro_entrega",
+          localField: "_id",
+          foreignField: "ID_Alquiler_id",
+          as: "alquiler"
+        }
+    },
+    {
+        $project: {
+          "alquileres": 0,
+          "alquiler._id": 0
+        }
+    },
+    {
+        $match: {
+          "alquiler": {
+            $ne: []
+          }
+        }
+    }
+]);
 
 /* 16. Listar todos los automóviles ordenados por marca y modelo. */
 use("db_prime_pepo");
-db.automovil.find();
 db.getCollection("automovil").aggregate([
     {
         $group: {
@@ -655,22 +706,106 @@ db.getCollection("automovil").aggregate([
         }
     },
     { $sort: {_id: 1} }
-])
+]);
 
 /* 17. Mostrar la cantidad total de automóviles en cada sucursal junto con su dirección. */
 use("db_prime_pepo");
-
+db.getCollection("sucursal").aggregate([
+    {
+        $lookup: {
+          from: "sucursal_automovil",
+          localField: "_id",
+          foreignField: "ID_Sucursal_id",
+          as: "autos"
+        }
+    },
+    {$unwind : "$autos"},
+    {
+        $group: {
+          _id: "$Nombre",
+          direccion: {$first: "$Direccion"},
+          CantidadAutos: {
+            $sum: "$autos.Cantidad_Disponible"
+          }
+        }
+    }
+]);
 
 /* 18. Obtener la cantidad total de alquileres registrados en la base de datos */
 use("db_prime_pepo");
-
+db.alquiler.aggregate([
+    {$count: 'ID_Alquiler'},
+    {
+        $project: {
+            'Total de Alquileres' : '$ID_Alquiler'
+        }
+    }
+]);
 
 /* 19. Mostrar los automóviles con capacidad igual a 5 personas y que
 estén disponibles.*/
 use("db_prime_pepo");
+db.automovil.find(
+    {
+        Capacidad: {$gt: 5}
+    }
+);
 
 /* 20. Obtener los datos del cliente que realizó la reserva con ID_Reserva específico. */
 use("db_prime_pepo");
+db.reserva.aggregate([{
+    $match: {
+        ID_Reserva: 1
+    }
+},
+{
+    $lookup: {
+        from: "cliente",
+        localField: "ID_Cliente_id",
+        foreignField: "_id",
+        as: "cliente_FK"
+    }
+},
+{
+    $project: {
+        "ID_Automovil_id": 0,
+        "Fecha_Reserva":0,
+        "Fecha_Inicio":0,
+        "Fecha_Fin":0
+    }
+},
+{
+    $group: {
+        _id: "$_id",
+        ID_Reserva: {
+            $first: "$ID_Reserva"
+        },
+        ID_Cliente_id: {
+            $first: "$ID_Cliente_id"
+        },
+        Estado: {
+            $first: "$Estado"
+        },
+        cliente_FK: {
+            $push: "$cliente_FK"
+        },
+    }
+},
+{
+    $project: {
+        "_id":0,
+        "ID_Cliente_id":0,
+        "cliente_FK._id": 0,
+        "Fecha_Reserva":0
+    }
+}
+]);
 
 /* 21. Listar los alquileres con fecha de inicio entre '2023-07-05' y '2023-07-10'. */
 use("db_prime_pepo");
+db.alquiler.find({
+    Fecha_Inicio: {
+        $gte: "2023-08-11",
+        $lte: "2023-09-11"
+    }
+});
