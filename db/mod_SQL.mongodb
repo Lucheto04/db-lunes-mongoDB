@@ -667,7 +667,7 @@ db.getCollection("cliente").aggregate([
     {
         $lookup: {
           from: "resgistro_entrega",
-          localField: "_id",
+          localField: "alquileres._id",
           foreignField: "ID_Alquiler_id",
           as: "alquiler"
         }
