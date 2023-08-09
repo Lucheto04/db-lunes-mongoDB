@@ -1,3 +1,4 @@
+/* Esquema de la coleccion de 'cliente'. */ 
 use("db_prime_pepo");
 db.createCollection("cliente", {
     validator: {
@@ -7,8 +8,7 @@ db.createCollection("cliente", {
             required: ["ID_Cliente", "nombre", "apellido", "DNI", "direccion", "telefono"],
             properties: {
                 _id: {
-                    bsonType: 'int',
-                    description: 'La cedula es obligatoria y debe ser un numero'
+                    bsonType: 'objectId'
                 },
                 ID_Cliente: {
                     bsonType: "int",
@@ -44,5 +44,49 @@ db.createCollection("cliente", {
     },
 });
 
-
+/* Esquema de la coleccion de 'empleado'. */ 
+use("db_prime_pepo");
+db.createCollection("empleado", {
+    validator: {
+        $jsonSchema: {
+            bsonType: "object",
+            title: "reserva",
+            required: ["ID_Empleado", "nombre", "apellido", "DNI", "direccion", "telefono", "cargo"],
+            properties: {
+                _id: {
+                    bsonType: 'objectId'
+                },
+                ID_Empleado: {
+                    bsonType: "int",
+                    description: "El ID_Empleado es obligatorio y debe ser un numero entero (int)"
+                },
+                nombre: {
+                    bsonType: "string",
+                    description: "El nombre es obligatorio y debe ser un string"
+                },
+                apellido: {
+                    bsonType: "string",
+                    description: "El apellido es obligatorio y debe ser un string"
+                },
+                DNI: {
+                    bsonType: "string",
+                    description: "El DNI es obligatorio y debe ser un string"
+                },
+                direccion: {
+                    bsonType: "string",
+                    description: "La direccion es obligatoria y debe ser un string"
+                },
+                telefono: {
+                    bsonType: "string",
+                    description: "El telefono es obligatorio y debe ser un string"
+                },
+                cargo: {
+                    bsonType: "string",
+                    enum: ["Gerente", "Vendedor", "Asistente"],
+                    description: "Solo hay 3 cargos, Gerente, Vendedor Y Asistente, y debe de ser un string"
+                },
+            }
+        },
+    },
+});
 

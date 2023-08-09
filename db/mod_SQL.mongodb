@@ -373,93 +373,48 @@ db.resgistro_entrega.insertMany([
 
 db.empleado.insertMany([
     {
-        _id: 1,
         ID_Empleado: 1,
-        Nombre: "Empleado1",
-        Apellido: "o",
-        DNI: "64578215",
-        Direccion: "Calle 11",
-        Telefono: "3225869547",
-        Cargo: "Agente de Entrega"
-    },
-    {
-        _id: 2,
-        ID_Empleado: 2,
-        Nombre: "Empleado2",
-        Apellido: "o",
-        DNI: "54879571",
-        Direccion: "Calle 11",
-        Telefono: "3152568475",
-        Cargo: "Agente de Mantenimiento"
-    },
-    {
-        _id: 3,
-        ID_Empleado: 3,
-        Nombre: "Empleado3",
-        Apellido: "o",
-        DNI: "1099586475",
-        Direccion: "Calle 12",
-        Telefono: "3285268475",
-        Cargo: "Agente de Entrega"
-    },
-    {
-        _id: 4,
-        ID_Empleado: 4,
-        Nombre: "Empleado4",
-        Apellido: "o",
-        DNI: "10045421685",
-        Direccion: "Calle 11",
-        Telefono: "3112589516",
-        Cargo: "Agente de Mantenimiento"
-    },
-    {
-        _id: 5,
-        ID_Empleado: 5,
-        Nombre: "Empleado5",
-        Apellido: "o",
-        DNI: "10045421685",
-        Direccion: "Calle 11",
-        Telefono: "3112589516",
-        Cargo: "Agente de Mantenimiento"
-    },
-    {
-        _id: 6,
-        ID_Empleado: 6,
-        Nombre: "Empleado6",
-        Apellido: "ramirez",
-        DNI: "64578215",
-        Direccion: "Calle 21",
-        Telefono: "65498731",
-        Cargo: "Gerente"
-    },
-    {
-        _id: 7,
-        ID_Empleado: 7,
-        Nombre: "Empleado7",
-        Apellido: "pepe",
-        DNI: "10153465",
-        Direccion: "Calle 13",
-        Telefono: "321684658",
-        Cargo: "Asistente"
-    },
-    {
-        _id: 8,
-        ID_Empleado: 8,
-        Nombre: "Empleado8",
-        Apellido: "asasas",
-        DNI: "4578732",
+        Nombre: "Jose",
+        Apellido: "Mogotocoro",
+        DNI: "98765428P",
         Direccion: "Calle 99",
-        Telefono: "312654687",
+        Telefono: "987456987",
         Cargo: "Vendedor"
     },
     {
-        _id: 9,
-        ID_Empleado: 9,
-        Nombre: "Empleado9",
-        Apellido: "ewrwerw",
-        DNI: "675416354",
-        Direccion: "Calle 55",
-        Telefono: "321654234",
+        ID_Empleado: 2,
+        Nombre: "Juan",
+        Apellido: "Elizalde",
+        DNI: "65432654Q",
+        Direccion: "Calle 1",
+        Telefono: "3152568475",
+        Cargo: "Asistente"
+    },
+    {
+        ID_Empleado: 3,
+        Nombre: "Daniela",
+        Apellido: "Mora",
+        DNI: "67842318M",
+        Direccion: "Calle 17",
+        Telefono: "348795616",
+        Cargo: "Gerente"
+    },
+    {
+        ID_Empleado: 4,
+        Nombre: "Brian",
+        Apellido: "Ramirez",
+        DNI: "76421359Y",
+        Direccion: "Calle 15",
+        Telefono: "321789654",
+        Cargo: "Asistente"
+    },
+    {
+        ID_Empleado: 5,
+        Nombre: "Daniel",
+        Apellido: "Carbajal",
+        DNI: "72164742K",
+        Direccion: "Calle 84",
+        Telefono: "124857564",
         Cargo: "Vendedor"
     }
 ]);
