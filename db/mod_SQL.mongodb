@@ -32,54 +32,49 @@ db.sucursal.insertMany([
 
 db.automovil.insertMany([
     {
-        _id: 1,
         ID_Automovil: 1,
-        Marca: "Chevrolet",
-        Modelo: "Camaro",
+        Marca: "Toyota",
+        Modelo: "Corolla",
         Anio: 2021,
-        Tipo:"Automovil",
-        Capacidad: 4,
-        Precio_Diario:140000
+        Tipo:"Sedan",
+        Capacidad: 5,
+        Precio_Diario:50.00
     },
     {
-        _id: 2,
         ID_Automovil: 2,
-        Marca: "Mazda",
-        Modelo: "2",
-        Anio: 2015,
-        Tipo:"Automovil",
-        Capacidad: 4,
-        Precio_Diario:80000
+        Marca: "Honda",
+        Modelo: "Civic",
+        Anio: 2020,
+        Tipo:"Sedan",
+        Capacidad: 5,
+        Precio_Diario:45.00
     },
     {
-        _id: 3,
         ID_Automovil: 3,
-        Marca: "Kia",
-        Modelo: "Picanto",
-        Anio: 2021,
-        Tipo:"Automovil",
-        Capacidad: 4,
-        Precio_Diario:90000
-    },
-    {
-        _id: 4,
-        ID_Automovil: 4,
         Marca: "Ford",
         Modelo: "Explorer",
-        Anio: 2014,
-        Tipo:"Automovil",
-        Capacidad: 6,
-        Precio_Diario:250000
+        Anio: 2019,
+        Tipo:"SUV",
+        Capacidad: 7,
+        Precio_Diario:60.00
     },
     {
-        _id: 5,
-        ID_Automovil: 5,
+        ID_Automovil: 4,
         Marca: "Chevrolet",
-        Modelo: "captiva",
-        Anio: 2017,
-        Tipo:"Automovil",
+        Modelo: "Equinox",
+        Anio: 2022,
+        Tipo:"SUV",
+        Capacidad: 5,
+        Precio_Diario:55.00
+    },
+    {
+        ID_Automovil: 5,
+        Marca: "Nissan",
+        Modelo: "Sentra",
+        Anio: 2022,
+        Tipo:"Sedan",
         Capacidad: 4,
-        Precio_Diario:130000
+        Precio_Diario:48.00
     }
 ]);
 
@@ -172,48 +167,48 @@ db.reserva.insertMany([
 db.cliente.insertMany([
     {
         ID_Cliente: 1,
-        Nombre: "Andres",
+        Nombre: "Juan",
         Apellido:"Perez",
-        DNI:"12345678N",
-        Direccion:"Calle 13",
-        Telefono:"123654987",
-        Email:"andres.perez@gmail.com"
+        DNI:"12345678",
+        Direccion:"Calle 123",
+        Telefono:"11111111",
+        Email:"juan@example.com"
     },
     {
         ID_Cliente: 2,
-        Nombre: "Jose",
-        Apellido:"Cabron",
-        DNI:"98732145Y",
-        Direccion:"Calle 24",
-        Telefono:"654132987",
-        Email:"jose.cabron@gmail.com"
+        Nombre: "Maria",
+        Apellido:"Lopez",
+        DNI:"87654321",
+        Direccion:"Avenida 456",
+        Telefono:"22222222",
+        Email:"maria@example.com"
     },
     {
         ID_Cliente: 3,
-        Nombre: "Johnsito",
+        Nombre: "Pedro",
         Apellido:"Gonzalez",
-        DNI:"98763721R",
-        Direccion:"Calle 87",
-        Telefono:"346557321",
-        Email:"johnsito.gonzalez@gmail.com"
+        DNI:"56789012",
+        Direccion:"Plaza 789",
+        Telefono:"33333333",
+        Email:"pedro@example.com"
     },
     {
         ID_Cliente: 4,
-        Nombre: "Diego",
-        Apellido:"Manga",
-        DNI:"98765434W",
-        Direccion:"Calle 66",
-        Telefono:"312145687",
-        Email:"diego.manga@gmail.com"
+        Nombre: "Laura",
+        Apellido:"Martinez",
+        DNI:"09876543",
+        Direccion:"Ruta 101",
+        Telefono:"44444444",
+        Email:"laura@example.com"
     },
     {
         ID_Cliente: 5,
-        Nombre: "Ivan",
-        Apellido:"Terrible",
-        DNI:"32165794K",
-        Direccion:"Calle 11",
-        Telefono:"968732124",
-        Email:"ivan.terrible@gmail.com"
+        Nombre: "Carlos",
+        Apellido:"Gomez",
+        DNI:"43210987",
+        Direccion:"Calle 987",
+        Telefono:"55555555",
+        Email:"carlos@example.com"
     },
 ]);
 
@@ -374,48 +369,48 @@ db.resgistro_entrega.insertMany([
 db.empleado.insertMany([
     {
         ID_Empleado: 1,
-        Nombre: "Jose",
-        Apellido: "Mogotocoro",
-        DNI: "98765428P",
-        Direccion: "Calle 99",
-        Telefono: "987456987",
-        Cargo: "Vendedor"
+        Nombre: "Ana",
+        Apellido: "Gomez",
+        DNI: "123456789",
+        Direccion: "Calle 111",
+        Telefono: "1111111111",
+        Cargo: "Gerente"
     },
     {
         ID_Empleado: 2,
-        Nombre: "Juan",
-        Apellido: "Elizalde",
-        DNI: "65432654Q",
-        Direccion: "Calle 1",
-        Telefono: "3152568475",
+        Nombre: "Luis",
+        Apellido: "Rodriguez",
+        DNI: "987654321",
+        Direccion: "Avenida 222",
+        Telefono: "2222222222",
         Cargo: "Asistente"
     },
     {
         ID_Empleado: 3,
-        Nombre: "Daniela",
-        Apellido: "Mora",
-        DNI: "67842318M",
-        Direccion: "Calle 17",
-        Telefono: "348795616",
-        Cargo: "Gerente"
+        Nombre: "Elena",
+        Apellido: "Fernandez",
+        DNI: "456789012",
+        Direccion: "Plaza 333",
+        Telefono: "3333333333",
+        Cargo: "Vendedor"
     },
     {
         ID_Empleado: 4,
-        Nombre: "Brian",
-        Apellido: "Ramirez",
-        DNI: "76421359Y",
-        Direccion: "Calle 15",
-        Telefono: "321789654",
-        Cargo: "Asistente"
+        Nombre: "Mario",
+        Apellido: "Torres",
+        DNI: "210987654",
+        Direccion: "Ruta 444",
+        Telefono: "4444444444",
+        Cargo: "Recepcionista"
     },
     {
         ID_Empleado: 5,
-        Nombre: "Daniel",
-        Apellido: "Carbajal",
-        DNI: "72164742K",
-        Direccion: "Calle 84",
-        Telefono: "124857564",
-        Cargo: "Vendedor"
+        Nombre: "Carlos",
+        Apellido: "Hernandez",
+        DNI: "543210987",
+        Direccion: "Carretera 555",
+        Telefono: "5555555555",
+        Cargo: "Chofer"
     }
 ]);
 
