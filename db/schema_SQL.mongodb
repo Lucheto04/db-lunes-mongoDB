@@ -90,3 +90,47 @@ db.createCollection("empleado", {
     },
 });
 
+/* Esquema de la coleccion de 'automovil'. */
+use("db_prime_pepo");
+db.createCollection("automovil", {
+    validator: {
+        $jsonSchema: {
+            bsonType: "object",
+            title: "reserva",
+            required: ["ID_Automovil", "marca", "modelo", "anio", "tipo", "capacidad", "precio_diario"],
+            properties: {
+                _id: {
+                    bsonType: 'objectId'
+                },
+                ID_Automovil: {
+                    bsonType: "int",
+                    description: "El ID_Automovil es obligatorio y debe ser un numero entero (int)"
+                },
+                marca: {
+                    bsonType: "string",
+                    description: "La marca es obligatoria y debe ser un string"
+                },
+                modelo: {
+                    bsonType: "string",
+                    description: "El modelo es obligatorio y debe ser un string"
+                },
+                anio: {
+                    bsonType: "int",
+                    description: "El anio es obligatorio y debe ser un numero entero (int)"
+                },
+                tipo: {
+                    bsonType: "string",
+                    description: "El tipo es obligatorio y debe ser un string"
+                },
+                capacidad: {
+                    bsonType: "int",
+                    description: "La capacidad es obligatoria y debe ser un numero entero (int)"
+                },
+                precio_diario: {
+                    bsonType: "number",
+                    description: "El precio_diario es obligatorio y debe ser un numero"
+                },
+            }
+        },
+    },
+});
