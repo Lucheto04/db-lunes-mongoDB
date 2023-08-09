@@ -171,57 +171,52 @@ db.reserva.insertMany([
 
 db.cliente.insertMany([
     {
-        _id: 1,
         ID_Cliente: 1,
-        Nombre: "cliente 1",
-        Apellido:"apellido ",
-        DNI:"125356895",
-        Direccion:"Calle 11",
-        Telefono:"3235866595",
-        Email:"correo@gmail.com"
+        Nombre: "Andres",
+        Apellido:"Perez",
+        DNI:"12345678N",
+        Direccion:"Calle 13",
+        Telefono:"123654987",
+        Email:"andres.perez@gmail.com"
     },
     {
-        _id: 2,
         ID_Cliente: 2,
-        Nombre: "cliente 2",
-        Apellido:"apellido ",
-        DNI:"125356895",
-        Direccion:"Calle 11",
-        Telefono:"3235866595",
-        Email:"correo@gmail.com"
+        Nombre: "Jose",
+        Apellido:"Cabron",
+        DNI:"98732145Y",
+        Direccion:"Calle 24",
+        Telefono:"654132987",
+        Email:"jose.cabron@gmail.com"
     },
     {
-        _id: 3,
         ID_Cliente: 3,
-        Nombre: "cliente 3",
-        Apellido:"apellido ",
-        DNI:"125356895",
-        Direccion:"Calle 11",
-        Telefono:"3235866595",
-        Email:"correo@gmail.com"
+        Nombre: "Johnsito",
+        Apellido:"Gonzalez",
+        DNI:"98763721R",
+        Direccion:"Calle 87",
+        Telefono:"346557321",
+        Email:"johnsito.gonzalez@gmail.com"
     },
     {
-        _id: 4,
         ID_Cliente: 4,
-        Nombre: "cliente 4",
-        Apellido:"apellido",
-        DNI:"125356895",
-        Direccion:"Calle 11",
-        Telefono:"3235866595",
-        Email:"correo@gmail.com"
+        Nombre: "Diego",
+        Apellido:"Manga",
+        DNI:"98765434W",
+        Direccion:"Calle 66",
+        Telefono:"312145687",
+        Email:"diego.manga@gmail.com"
     },
     {
-        _id: 5,
         ID_Cliente: 5,
-        Nombre: "cliente 5",
-        Apellido:"apellido",
-        DNI:"125356895",
+        Nombre: "Ivan",
+        Apellido:"Terrible",
+        DNI:"32165794K",
         Direccion:"Calle 11",
-        Telefono:"3235866595",
-        Email:"correo@gmail.com"
+        Telefono:"968732124",
+        Email:"ivan.terrible@gmail.com"
     },
 ]);
-use("db_prime_pepo");
+
 db.alquiler.insertMany([
     {
         _id: 1,

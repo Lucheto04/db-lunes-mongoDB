@@ -1,0 +1,48 @@
+use("db_prime_pepo");
+db.createCollection("cliente", {
+    validator: {
+        $jsonSchema: {
+            bsonType: "object",
+            title: "reserva",
+            required: ["ID_Cliente", "nombre", "apellido", "DNI", "direccion", "telefono"],
+            properties: {
+                _id: {
+                    bsonType: 'int',
+                    description: 'La cedula es obligatoria y debe ser un numero'
+                },
+                ID_Cliente: {
+                    bsonType: "int",
+                    description: "El ID_Cliente es obligatorio y debe ser un numero entero (int)"
+                },
+                nombre: {
+                    bsonType: "string",
+                    description: "El nombre es obligatorio y debe ser un string"
+                },
+                apellido: {
+                    bsonType: "string",
+                    description: "El apellido es obligatorio y debe ser un string"
+                },
+                DNI: {
+                    bsonType: "string",
+                    description: "El DNI es obligatorio y debe ser un string"
+                },
+                direccion: {
+                    bsonType: "string",
+                    description: "La direccion es obligatoria y debe ser un string"
+                },
+                telefono: {
+                    bsonType: "string",
+                    description: "El telefono es obligatorio y debe ser un string"
+                },
+                email: {
+                    bsonType: "string",
+                    description: "El email no es obligatorio, pero debe ser un string con formato de correo",
+                    pattern: "^[a-zA-Z0-9.]+@",
+                },
+            }
+        },
+    },
+});
+
+
+
