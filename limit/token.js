@@ -7,11 +7,20 @@ dotenv.config('../');
 
 const appToken = Router();
 const appVerify = Router();
-
-appToken.use('/:collection' ,async(req,res)=>{
-    let inst;
+const createInstance = (className) => {
+    const classMap = {
+      'cliente': Cliente
+    };
+    const Class = classMap[className];
+    return (Class) ? plainToClass(Class, {}, { ignoreDecorators: true }) : undefined;
+};
+appToken.use("/:collection", async (req, res) => {
     try {
-        inst = plainToClass(eval(req.params.collection), {}, { ignoreDecorators: true })
+      const collectionName = req.params.collection;
+      const inst = createInstance(collectionName);
+      if (!inst)
+      return res.status(404).send({ status: 404, message: "colección no encontrada" })
+  
         const encoder = new TextEncoder();
         const jwtconstructor = new SignJWT(Object.assign({},  classToPlain(inst)));
         const jwt = await jwtconstructor
