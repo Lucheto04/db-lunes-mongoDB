@@ -365,52 +365,52 @@ db.resgistro_entrega.insertMany([
         Kilometraje_Entregado: 39643,
     }
 ]);
-
+use("db_prime_pepo");
 db.empleado.insertMany([
     {
-        ID_Empleado: 1,
-        Nombre: "Ana",
-        Apellido: "Gomez",
-        DNI: "123456789",
-        Direccion: "Calle 111",
-        Telefono: "1111111111",
-        Cargo: "Gerente"
+        empleado: 1,
+        nombre: "Ana",
+        apellido: "Gomez",
+        documento: "123456789",
+        direccion: "Calle 111",
+        numero: "1111111111",
+        cargo: "Gerente"
     },
     {
-        ID_Empleado: 2,
-        Nombre: "Luis",
-        Apellido: "Rodriguez",
-        DNI: "987654321",
-        Direccion: "Avenida 222",
-        Telefono: "2222222222",
-        Cargo: "Asistente"
+        empleado: 2,
+        nombre: "Luis",
+        apellido: "Rodriguez",
+        documento: "987654321",
+        direccion: "Avenida 222",
+        numero: "2222222222",
+        cargo: "Asistente"
     },
     {
-        ID_Empleado: 3,
-        Nombre: "Elena",
-        Apellido: "Fernandez",
-        DNI: "456789012",
-        Direccion: "Plaza 333",
-        Telefono: "3333333333",
-        Cargo: "Vendedor"
+        empleado: 3,
+        nombre: "Elena",
+        apellido: "Fernandez",
+        documento: "456789012",
+        direccion: "Plaza 333",
+        numero: "3333333333",
+        cargo: "Vendedor"
     },
     {
-        ID_Empleado: 4,
-        Nombre: "Mario",
-        Apellido: "Torres",
-        DNI: "210987654",
-        Direccion: "Ruta 444",
-        Telefono: "4444444444",
-        Cargo: "Recepcionista"
+        empleado: 4,
+        nombre: "Mario",
+        apellido: "Torres",
+        documento: "210987654",
+        direccion: "Ruta 444",
+        numero: "4444444444",
+        cargo: "Asistente"
     },
     {
-        ID_Empleado: 5,
-        Nombre: "Carlos",
-        Apellido: "Hernandez",
-        DNI: "543210987",
-        Direccion: "Carretera 555",
-        Telefono: "5555555555",
-        Cargo: "Chofer"
+        empleado: 5,
+        nombre: "Carlos",
+        apellido: "Hernandez",
+        documento: "543210987",
+        direccion: "Carretera 555",
+        numero: "5555555555",
+        cargo: "Vendedor"
     }
 ]);
 

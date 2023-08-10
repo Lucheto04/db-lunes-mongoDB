@@ -57,36 +57,36 @@ db.createCollection("empleado", {
         $jsonSchema: {
             bsonType: "object",
             title: "empleado",
-            required: ["ID_Empleado", "Nombre", "Apellido", "DNI", "Direccion", "Telefono", "Cargo"],
+            required: ["empleado", "nombre", "apellido", "documento", "direccion", "numero", "cargo"],
             properties: {
                 _id: {
                     bsonType: 'objectId'
                 },
-                ID_Empleado: {
+                empleado: {
                     bsonType: "int",
                     description: `{"status": "402", "message": "El ID_Empleado es obligatorio y debe ser un numero entero (int)"}` 
                 },
-                Nombre: {
+                nombre: {
                     bsonType: "string",
                     description: `{"status": "402", "message": "El nombre es obligatorio y debe ser un string"}`
                 },
-                Apellido: {
+                apellido: {
                     bsonType: "string",
                     description: `{"status": "402", "message": "El apellido es obligatorio y debe ser un string"}`
                 },
-                DNI: {
+                documento: {
                     bsonType: "string",
                     description: `{"status": "402", "message": "El DNI es obligatorio y debe ser un string"}`
                 },
-                Direccion: {
+                direccion: {
                     bsonType: "string",
                     description: `{"status": "402", "message": "La direccion es obligatoria y debe ser un string"}`
                 },
-                Telefono: {
+                numero: {
                     bsonType: "string",
                     description: `{"status": "402", "message": "El telefono es obligatorio y debe ser un string"}`
                 },
-                Cargo: {
+                cargo: {
                     bsonType: "string",
                     enum: ["Gerente", "Vendedor", "Asistente"],
                     description: `{"status": "402", "message": "Solo hay 3 cargos, Gerente, Vendedor Y Asistente, y debe de ser un string"}`
