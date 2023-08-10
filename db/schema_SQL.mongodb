@@ -1,42 +1,45 @@
 /* Esquema de la coleccion de 'cliente'. */ 
 use("db_prime_pepo");
 db.createCollection("cliente", {
+    capped: true,
+    size: 1900,
+    max: 5,
     validator: {
         $jsonSchema: {
             bsonType: "object",
-            title: "reserva",
-            required: ["ID_Cliente", "nombre", "apellido", "DNI", "direccion", "telefono"],
+            title: "cliente",
+            required: ["cliente", "nombre", "apellido", "documento", "direccion", "numero"],
             properties: {
                 _id: {
                     bsonType: 'objectId'
                 },
-                ID_Cliente: {
+                cliente: {
                     bsonType: "int",
-                    description: "El ID_Cliente es obligatorio y debe ser un numero entero (int)"
+                    description: `{"status": "402", "message": "El parametro ID_Cliente es obligatorio y debe ser un numero entero (int)"}` 
                 },
                 nombre: {
                     bsonType: "string",
-                    description: "El nombre es obligatorio y debe ser un string"
+                    description: `{"status": "402", "message": "El parametro Nombre_Cliente es obligatorio y debe ser un string"}`
                 },
                 apellido: {
                     bsonType: "string",
-                    description: "El apellido es obligatorio y debe ser un string"
+                    description: `{"status": "402", "message": "El parametro Apellido_cliente es obligatorio y debe ser un string"}`
                 },
-                DNI: {
+                documento: {
                     bsonType: "string",
-                    description: "El DNI es obligatorio y debe ser un string"
+                    description: `{"status": "402", "message": "El parametro DNI es obligatorio y debe ser un string"}`
                 },
                 direccion: {
                     bsonType: "string",
-                    description: "La direccion es obligatoria y debe ser un string"
+                    description: `{"status": "402", "message": "El parametro direccion es obligatoria y debe ser un string"}` 
                 },
-                telefono: {
+                numero: {
                     bsonType: "string",
-                    description: "El telefono es obligatorio y debe ser un string"
+                    description: `{"status": "402", "message": "El parametro telefono es obligatorio y debe ser un string"}`
                 },
-                email: {
+                Email: {
                     bsonType: "string",
-                    description: "El email no es obligatorio, pero debe ser un string con formato de correo",
+                    description: `{"status": "402", "message": "El parametro email no es obligatorio, pero debe ser un string con formato de correo"}`,
                     pattern: "^[a-zA-Z0-9.]+@",
                 },
             }
@@ -47,43 +50,46 @@ db.createCollection("cliente", {
 /* Esquema de la coleccion de 'empleado'. */ 
 use("db_prime_pepo");
 db.createCollection("empleado", {
+    capped: true,
+    size: 1900,
+    max: 5,
     validator: {
         $jsonSchema: {
             bsonType: "object",
-            title: "reserva",
-            required: ["ID_Empleado", "nombre", "apellido", "DNI", "direccion", "telefono", "cargo"],
+            title: "empleado",
+            required: ["ID_Empleado", "Nombre", "Apellido", "DNI", "Direccion", "Telefono", "Cargo"],
             properties: {
                 _id: {
                     bsonType: 'objectId'
                 },
                 ID_Empleado: {
                     bsonType: "int",
-                    description: "El ID_Empleado es obligatorio y debe ser un numero entero (int)"
+                    description: `{"status": "402", "message": "El ID_Empleado es obligatorio y debe ser un numero entero (int)"}` 
                 },
-                nombre: {
+                Nombre: {
                     bsonType: "string",
-                    description: "El nombre es obligatorio y debe ser un string"
+                    description: `{"status": "402", "message": "El nombre es obligatorio y debe ser un string"}`
                 },
-                apellido: {
+                Apellido: {
                     bsonType: "string",
-                    description: "El apellido es obligatorio y debe ser un string"
+                    description: `{"status": "402", "message": "El apellido es obligatorio y debe ser un string"}`
                 },
                 DNI: {
                     bsonType: "string",
-                    description: "El DNI es obligatorio y debe ser un string"
+                    description: `{"status": "402", "message": "El DNI es obligatorio y debe ser un string"}`
                 },
-                direccion: {
+                Direccion: {
                     bsonType: "string",
-                    description: "La direccion es obligatoria y debe ser un string"
+                    description: `{"status": "402", "message": "La direccion es obligatoria y debe ser un string"}`
                 },
-                telefono: {
+                Telefono: {
                     bsonType: "string",
-                    description: "El telefono es obligatorio y debe ser un string"
+                    description: `{"status": "402", "message": "El telefono es obligatorio y debe ser un string"}`
                 },
-                cargo: {
+                Cargo: {
                     bsonType: "string",
                     enum: ["Gerente", "Vendedor", "Asistente"],
-                    description: "Solo hay 3 cargos, Gerente, Vendedor Y Asistente, y debe de ser un string"
+                    description: `{"status": "402", "message": "Solo hay 3 cargos, Gerente, Vendedor Y Asistente, y debe de ser un string"}`
                 },
             }
         },
@@ -93,44 +99,87 @@ db.createCollection("empleado", {
 /* Esquema de la coleccion de 'automovil'. */
 use("db_prime_pepo");
 db.createCollection("automovil", {
+    capped: true,
+    size: 1900,
+    max: 5,
     validator: {
         $jsonSchema: {
             bsonType: "object",
-            title: "reserva",
-            required: ["ID_Automovil", "marca", "modelo", "anio", "tipo", "capacidad", "precio_diario"],
+            title: "automovil",
+            required: ["ID_Automovil", "Marca", "Modelo", "Anio", "Tipo", "Capacidad", "Precio_Diario"],
             properties: {
                 _id: {
                     bsonType: 'objectId'
                 },
                 ID_Automovil: {
                     bsonType: "int",
-                    description: "El ID_Automovil es obligatorio y debe ser un numero entero (int)"
+                    description: `{"status": "402", "message": "El ID_Automovil es obligatorio y debe ser un numero entero (int)"}`
                 },
-                marca: {
+                Marca: {
                     bsonType: "string",
-                    description: "La marca es obligatoria y debe ser un string"
+                    description: `{"status": "402", "message": "La marca es obligatoria y debe ser un string"}`
                 },
-                modelo: {
+                Modelo: {
                     bsonType: "string",
-                    description: "El modelo es obligatorio y debe ser un string"
+                    description: `{"status": "402", "message": "El modelo es obligatorio y debe ser un string"}`
                 },
-                anio: {
+                Anio: {
                     bsonType: "int",
-                    description: "El anio es obligatorio y debe ser un numero entero (int)"
+                    description: `{"status": "402", "message": "El anio es obligatorio y debe ser un numero entero (int)"}`
                 },
-                tipo: {
+                Tipo: {
                     bsonType: "string",
-                    description: "El tipo es obligatorio y debe ser un string"
+                    description: `{"status": "402", "message": "El tipo es obligatorio y debe ser un string"}`
                 },
-                capacidad: {
+                Capacidad: {
                     bsonType: "int",
-                    description: "La capacidad es obligatoria y debe ser un numero entero (int)"
+                    description: `{"status": "402", "message": "La capacidad es obligatoria y debe ser un numero entero (int)"}`
                 },
-                precio_diario: {
+                Precio_Diario: {
                     bsonType: "number",
-                    description: "El precio_diario es obligatorio y debe ser un numero"
+                    description: `{"status": "402", "message": "El precio_diario es obligatorio y debe ser un numero"}`
                 },
             }
         },
+    },
+});
+
+/* Esquema de la coleccion de 'sucursal'. */
+db.createCollection("sucursal", {
+    capped: true,
+    size: 1900,
+    max: 5,
+    validator: {
+    $jsonSchema: {
+        bsonType: "object",
+        title: "sucursal",
+        required: ["ID_Sucursal", "Nombre", "Direccion", "Telefono"],
+        properties: {
+            _id: {
+                bsonType: 'objectId'
+            },
+            ID_Sucursal: {
+                bsonType: "int",
+                minimum: 1,
+                maximum: 20,
+                description: `{"status": "402", "message": "El ID_Sucursal es obligatorio y debe ser un numero entero (int) entre 1 a 20"}`
+            },
+            Nombre: {
+                bsonType: "string",
+                pattern: "^[A-Za-z\\s]+$",
+                description: `{"status": "402", "message": "El Nombre es obligatorio y debe ser un string"}`
+            },
+            Direccion: {
+                bsonType: "string",
+                pattern: "^[a-zA-Z0-9áéíóúÁÉÍÓÚñÑüÜ,.#@\\s-]+$",
+                description: `{"status": "402", "message": "La Direccion es obligatoria y debe ser un string"}`
+            },
+            Telefono: {
+                bsonType: "string",
+                pattern: "^[a-zA-Z0-9áéíóúÁÉÍÓÚñÑüÜ,.#@\\s-]+$",
+                description: `{"status": "402", "message": "Debe informar el campo telefono y este debe ser un string"}`
+            },
+        },
+    },
     },
 });
