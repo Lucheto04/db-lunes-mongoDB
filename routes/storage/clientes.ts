@@ -4,32 +4,26 @@ import { IsDefined } from 'class-validator';
 export class Cliente {
 
     @Expose({ name: 'ID_Cliente' })
-    // @IsNumber({}, { message: () => { throw { status: 422, message: `El cedula_usuario no cumple con el formato, debe ser un numero`}}})
     @IsDefined({ message: () => { throw { status: 422, message: `El parametro ID_Cliente es obligatorio y debe ser un string` } } })
     cliente: number;
 
     @Expose({ name: 'Nombre_Cliente' })
-    // @IsString({ message: () => { throw { status: 422, message: `El nombre_usuario no cumple con el formato, debe ser un string`}}})
     @IsDefined({ message: () => { throw { status: 422, message: `El parametro Nombre_Cliente es obligatorio y debe ser un string` } } })
     nombre: string;
 
     @Expose({ name: 'Apellido_cliente' })
-    // @IsString({ message: () => { throw { status: 422, message: `El nombre_usuario no cumple con el formato, debe ser un string`}}})
     @IsDefined({ message: () => { throw { status: 422, message: `El parametro Apellido_cliente es obligatorio y debe ser un string` } } })
     apellido: string;
 
     @Expose({ name: 'DNI' })
-    // @IsString({ message: () => { throw { status: 422, message: `El nombre_usuario no cumple con el formato, debe ser un string`}}})
     @IsDefined({ message: () => { throw { status: 422, message: `El parametro DNI es obligatorio y debe ser un string` } } })
     documento: string;
 
     @Expose({ name: 'Direccion_Cliente' })
-    // @IsString({ message: () => { throw { status: 422, message: `El nombre_usuario no cumple con el formato, debe ser un string`}}})
     @IsDefined({ message: () => { throw { status: 422, message: `El parametro Direccion_Cliente es obligatorio y debe ser un string` } } })
     direccion: string;
 
     @Expose({ name: 'Telefono_Cliente' })
-    // @IsString({ message: () => { throw { status: 422, message: `El nombre_usuario no cumple con el formato, debe ser un string`}}})
     @IsDefined({ message: () => { throw { status: 422, message: `El parametro Telefono_Cliente es obligatorio y debe ser un string` } } })
     numero: string;
 

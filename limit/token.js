@@ -1,6 +1,7 @@
 import { plainToClass, classToPlain } from 'class-transformer';
 import dotenv from 'dotenv';
 import { Cliente } from '../routes/storage/clientes.js';
+import { Empleado } from '../routes/storage/empleados.js';
 import {Router} from 'express';
 import { SignJWT, jwtVerify } from 'jose';
 dotenv.config('../');
@@ -9,17 +10,18 @@ const appToken = Router();
 const appVerify = Router();
 const createInstance = (className) => {
     const classMap = {
-      'cliente': Cliente
+      'cliente': Cliente,
+      'empleados': Empleado
     };
     const Class = classMap[className];
     return (Class) ? plainToClass(Class, {}, { ignoreDecorators: true }) : undefined;
 };
 appToken.use("/:collection", async (req, res) => {
     try {
-      const collectionName = req.params.collection;
-      const inst = createInstance(collectionName);
-      if (!inst)
-      return res.status(404).send({ status: 404, message: "colección no encontrada" })
+        const collectionName = req.params.collection;
+        const inst = createInstance(collectionName);
+        if (!inst)
+        return res.status(404).send({ status: 404, message: "colección no encontrada" })
   
         const encoder = new TextEncoder();
         const jwtconstructor = new SignJWT(Object.assign({},  classToPlain(inst)));
