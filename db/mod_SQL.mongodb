@@ -1,168 +1,164 @@
 use("db_prime_pepo");
 db.sucursal.insertMany([
     {
-        _id: 1,
-        ID_Sucursal:1,
-        Nombre:"Bucaramanga",
-        Direccion:"calla 11 cr.32",
-        Telefono:"3224757534"
+        sucursal_id:1,
+        nombre:"Sucursal A",
+        direccion:"Calle Principal 123",
+        telefono:"1111111111"
     },
     {
-        _id: 2,
-        ID_Sucursal:2,
-        Nombre:"Medellin",
-        Direccion:"calla 11 cr.32",
-        Telefono:"3588654216"
+        sucursal_id:2,
+        nombre:"Sucursal B",
+        direccion:"Avenida Central 456",
+        telefono:"2222222222"
     },
     {
-        _id: 3,
-        ID_Sucursal:3,
-        Nombre:"Bogota",
-        Direccion:"calla 11 cr.32",
-        Telefono:"3215489586"
+        sucursal_id:3,
+        nombre:"Sucursal C",
+        direccion:"Plaza Principal 789",
+        telefono:"3333333333"
     },
     {
-        _id: 4,
-        ID_Sucursal:4,
-        Nombre:"Barranca",
-        Direccion:"calla 11 cr.32",
-        Telefono:"3156589574"
+        sucursal_id:4,
+        nombre:"Sucursal D",
+        direccion:"Ruta Secundaria 101",
+        telefono:"4444444444"
+    },
+    {
+        sucursal_id:5,
+        nombre:"Sucursal E",
+        direccion:"Carretera Principal 987",
+        telefono:"5555555555"
     }
 ]);
 
+use("db_prime_pepo");
 db.automovil.insertMany([
     {
-        ID_Automovil: 1,
-        Marca: "Toyota",
-        Modelo: "Corolla",
-        Anio: 2021,
-        Tipo:"Sedan",
-        Capacidad: 5,
-        Precio_Diario:50.00
+        automovil: 1,
+        marca: "Toyota",
+        modelo: "Corolla",
+        anio: 2021,
+        tipo:"Sedan",
+        capacidad: 5,
+        precio_diaro:50.00
     },
     {
-        ID_Automovil: 2,
-        Marca: "Honda",
-        Modelo: "Civic",
-        Anio: 2020,
-        Tipo:"Sedan",
-        Capacidad: 5,
-        Precio_Diario:45.00
+        automovil: 2,
+        marca: "Honda",
+        modelo: "Civic",
+        anio: 2020,
+        tipo:"Sedan",
+        capacidad: 5,
+        precio_diaro:45.00
     },
     {
-        ID_Automovil: 3,
-        Marca: "Ford",
-        Modelo: "Explorer",
-        Anio: 2019,
-        Tipo:"SUV",
-        Capacidad: 7,
-        Precio_Diario:60.00
+        automovil: 3,
+        marca: "Ford",
+        modelo: "Explorer",
+        anio: 2019,
+        tipo:"SUV",
+        capacidad: 7,
+        precio_diaro:60.00
     },
     {
-        ID_Automovil: 4,
-        Marca: "Chevrolet",
-        Modelo: "Equinox",
-        Anio: 2022,
-        Tipo:"SUV",
-        Capacidad: 5,
-        Precio_Diario:55.00
+        automovil: 4,
+        marca: "Chevrolet",
+        modelo: "Equinox",
+        anio: 2022,
+        tipo:"SUV",
+        capacidad: 5,
+        precio_diaro:55.00
     },
     {
-        ID_Automovil: 5,
-        Marca: "Nissan",
-        Modelo: "Sentra",
-        Anio: 2022,
-        Tipo:"Sedan",
-        Capacidad: 4,
-        Precio_Diario:48.00
+        automovil: 5,
+        marca: "Nissan",
+        modelo: "Sentra",
+        anio: 2022,
+        tipo:"Sedan",
+        capacidad: 4,
+        precio_diaro:48.00
     }
 ]);
 
+use("db_prime_pepo");
 db.sucursal_automovil.insertMany([
     {
-        _id: 1,
-        ID_Sucursal_id: 1,
-        ID_Automovil_id: 1,
-        Cantidad_Disponible:5
+        sucursal: 1,
+        automovil: 1,
+        cantidad_autos:3
     },
     {
-        _id: 2,
-        ID_Sucursal_id: 2,
-        ID_Automovil_id: 2,
-        Cantidad_Disponible:9
+        sucursal: 2,
+        automovil: 2,
+        cantidad_autos:5
     },
     {
-        _id: 3,
-        ID_Sucursal_id: 3,
-        ID_Automovil_id: 3,
-        Cantidad_Disponible:15
+        sucursal: 3,
+        automovil: 3,
+        cantidad_autos:2
     },
     {
-        _id: 4,
-        ID_Sucursal_id: 3,
-        ID_Automovil_id: 4,
-        Cantidad_Disponible:20
+        sucursal: 4,
+        automovil: 4,
+        cantidad_autos:4
     },
     {
-        _id: 5,
-        ID_Sucursal_id: 2,
-        ID_Automovil_id: 5,
-        Cantidad_Disponible:4
+        sucursal: 5,
+        automovil: 5,
+        cantidad_autos:1
     }
 ]);
 
+use("db_prime_pepo");
 db.reserva.insertMany([
     {
-        _id: 1,
-        ID_Reserva: 1,
-        ID_Cliente_id: 1,
-        ID_Automovil_id: 1,
-        Fecha_Reserva: "2023-07-15",
-        Fecha_Inicio: "2024-01-15",
-        Fecha_Fin: "2024-01-20",
-        Estado: "Confirmado"
+        reserva: 1,
+        cliente: 2,
+        automovil: 1,
+        reserva_fecha: "2023-07-06",
+        inicio: "2023-07-10",
+        fin: "2023-07-15",
+        estado: "Pendiente"
     },
     {
-        _id: 2,
-        ID_Reserva: 2,
-        ID_Cliente_id: 2,
-        ID_Automovil_id: 2,
-        Fecha_Reserva: "2023-07-15",
-        Fecha_Inicio: "2024-01-15",
-        Fecha_Fin: "2024-01-20",
-        Estado: "Confirmado"
+        reserva: 2,
+        cliente: 3,
+        automovil: 3,
+        reserva_fecha: "2023-07-07",
+        inicio: "2023-07-12",
+        fin: "2023-07-17",
+        estado: "Pendiente"
     },
     {
-        _id: 3,
-        ID_Reserva: 3,
-        ID_Cliente_id: 3,
-        ID_Automovil_id: 3,
-        Fecha_Reserva: "2023-07-15",
-        Fecha_Inicio: "2024-01-15",
-        Fecha_Fin: "2024-01-20",
-        Estado: "Confirmado"
+        reserva: 3,
+        cliente: 4,
+        automovil: 2,
+        reserva_fecha: "2023-07-08",
+        inicio: "2023-07-14",
+        fin: "2023-07-19",
+        estado: "Pendiente"
     },
     {
-        _id: 4,
-        ID_Reserva: 4,
-        ID_Cliente_id: 4,
-        ID_Automovil_id: 4,
-        Fecha_Reserva: "2023-07-15",
-        Fecha_Inicio: "2024-01-15",
-        Fecha_Fin: "2024-01-20",
-        Estado: "Apartado"
+        reserva: 4,
+        cliente: 5,
+        automovil: 4,
+        reserva_fecha: "2023-07-09",
+        inicio: "2023-07-15",
+        fin: "2023-07-20",
+        estado: "Pendiente"
     },
     {
-        _id: 5,
-        ID_Reserva: 5,
-        ID_Cliente_id: 5,
-        ID_Automovil_id: 5,
-        Fecha_Reserva: "2023-07-15",
-        Fecha_Inicio: "2024-01-15",
-        Fecha_Fin: "2024-01-20",
-        Estado: "Confirmado"
+        reserva: 5,
+        cliente: 5,
+        automovil: 5,
+        reserva_fecha: "2023-07-10",
+        inicio: "2023-07-16",
+        fin: "2023-07-21",
+        estado: "Pendiente"
     }
 ]);
+
 use("db_prime_pepo");
 db.cliente.insertMany([
     {
@@ -212,159 +208,148 @@ db.cliente.insertMany([
     },
 ]);
 
+use("db_prime_pepo");
 db.alquiler.insertMany([
     {
-        _id: 1,
-        ID_Alquiler: 1,
-        ID_Cliente_id: 1,
-        ID_Automovil_id: 1,
-        Fecha_Inicio: "2023-07-05",
-        Fecha_Fin: "2023-07-20",
-        Costo_Total: 1100000,
-        Estado: "Finalizado"
+        alquiler: 1,
+        cliente: 1,
+        automovil: 3,
+        inicio: "2023-07-01",
+        fin: "2023-07-05",
+        costo: 240.00,
+        estado: "Activo"
     },
     {
-        _id: 2,
-        ID_Alquiler: 2,
-        ID_Cliente_id: 2,
-        ID_Automovil_id: 2,
-        Fecha_Inicio: "2023-07-15",
-        Fecha_Fin: "2023-07-20",
-        Costo_Total: 5100000,
-        Estado: "activo"
+        alquiler: 2,
+        cliente: 2,
+        automovil: 4,
+        inicio: "2023-07-02",
+        fin: "2023-07-07",
+        costo: 275.00,
+        estado: "Disponible"
     },
     {
-        _id: 3,
-        ID_Alquiler: 3,
-        ID_Cliente_id: 3,
-        ID_Automovil_id: 3,
-        Fecha_Inicio: "2023-07-15",
-        Fecha_Fin: "2023-07-20",
-        Costo_Total: 2100000,
-        Estado: "activo"
+        alquiler: 3,
+        cliente: 3,
+        automovil: 1,
+        inicio: "2023-07-03",
+        fin: "2023-07-06",
+        costo: 150.00,
+        estado: "Activo"
     },
     {
-        _id: 4,
-        ID_Alquiler: 4,
-        ID_Cliente_id: 4,
-        ID_Automovil_id: 4,
-        Fecha_Inicio: "2023-07-15",
-        Fecha_Fin: "2023-07-20",
-        Costo_Total: 900000,
-        Estado: "activo"
+        alquiler: 4,
+        cliente: 4,
+        automovil: 5,
+        inicio: "2023-07-04",
+        fin: "2023-07-08",
+        costo: 192.00,
+        estado: "Activo"
     },
     {
-        _id: 5,
-        ID_Alquiler: 5,
-        ID_Cliente_id: 5,
-        ID_Automovil_id: 5,
-        Fecha_Inicio: "2023-07-15",
-        Fecha_Fin: "2023-07-20",
-        Costo_Total: 1200000,
-        Estado: "Finalizado"
+        alquiler: 5,
+        cliente: 5,
+        automovil: 2,
+        inicio: "2023-07-05",
+        fin: "2023-07-09",
+        costo: 225.00,
+        estado: "Disponible"
     },
 ]);
 
+use("db_prime_pepo");
 db.registro_devolucion.insertMany([
     {
-        _id: 1,
-        ID_Registro: 1,
-        ID_Alquiler_id: 1,
-        ID_Empleado_id: 1,
-        Fecha_Devolucion: "2024-01-15",
-        Combustible_Devuelto: 5.2,
-        Kilometraje_Devuelto: 20000,
-        Monto_Adicional: 20000,
+        registro: 1,
+        alquiler: 1,
+        empleado: 3,
+        devolucion: "2023-07-10",
+        combustible: 10.00,
+        kilometraje: 2500,
+        monto: 20.00,
     },
     {
-        _id: 2,
-        ID_Registro: 2,
-        ID_Alquiler_id: 2,
-        ID_Empleado_id: 2,
-        Fecha_Devolucion: "2024-01-15",
-        Combustible_Devuelto: 1.2,
-        Kilometraje_Devuelto: 30000,
-        Monto_Adicional: 10000,
+        registro: 2,
+        alquiler: 2,
+        empleado: 4,
+        devolucion: "2023-07-12",
+        combustible: 15.00,
+        kilometraje: 2100,
+        monto: 15.00,
     },
     {
-        _id: 3,
-        ID_Registro: 3,
-        ID_Alquiler_id: 3,
-        ID_Empleado_id: 3,
-        Fecha_Devolucion: "2024-01-15",
-        Combustible_Devuelto: 2.2,
-        Kilometraje_Devuelto: 20000,
-        Monto_Adicional: 0,
+        registro: 3,
+        alquiler: 3,
+        empleado: 1,
+        devolucion: "2023-07-11",
+        combustible: 20.00,
+        kilometraje: 2300,
+        monto: 25.00,
     },
     {
-        _id: 4,
-        ID_Registro: 4,
-        ID_Alquiler_id: 4,
-        ID_Empleado_id: 4,
-        Fecha_Devolucion: "2024-01-15",
-        Combustible_Devuelto: 6.2,
-        Kilometraje_Devuelto: 21232,
-        Monto_Adicional: 0,
+        registro: 4,
+        alquiler: 4,
+        empleado: 5,
+        devolucion: "2023-07-13",
+        combustible: 25.00,
+        kilometraje: 2600,
+        monto: 30.00,
     },
     {
-        _id: 5,
-        ID_Registro: 5,
-        ID_Alquiler_id: 5,
-        ID_Empleado_id: 5,
-        Fecha_Devolucion: "2024-01-15",
-        Combustible_Devuelto: 8.2,
-        Kilometraje_Devuelto: 40000,
-        Monto_Adicional: 0,
+        registro: 5,
+        alquiler: 5,
+        empleado: 2,
+        devolucion: "2023-07-14",
+        combustible: 18.00,
+        kilometraje: 2000,
+        monto: 12.00,
     }
 ]);
 
-db.resgistro_entrega.insertMany([
+use("db_prime_pepo");
+db.registro_entrega.insertMany([
     {
-        _id: 1,
-        ID_Registro: 1,
-        ID_Alquiler_id: 1,
-        ID_Empleado_id: 1,
-        Fecha_Entrega: "2023-12-15",
-        Combustible_Entregado: 5,
-        Kilometraje_Entregado: 19000,
+        registro: 1,
+        alquiler: 1,
+        empleado: 3,
+        entrega: "2023-07-05",
+        combustible: 40.00,
+        kilometraje: 2000,
     },
     {
-        _id: 2,
-        ID_Registro: 2,
-        ID_Alquiler_id: 2,
-        ID_Empleado_id: 2,
-        Fecha_Entrega: "2023-12-15",
-        Combustible_Entregado: 5,
-        Kilometraje_Entregado: 29532,
+        registro: 2,
+        alquiler: 2,
+        empleado: 4,
+        entrega: "2023-07-07",
+        combustible: 30.00,
+        kilometraje: 1800,
     },
     {
-        _id: 3,
-        ID_Registro: 3,
-        ID_Alquiler_id: 3,
-        ID_Empleado_id: 3,
-        Fecha_Entrega: "2023-12-15",
-        Combustible_Entregado: 5,
-        Kilometraje_Entregado: 19454,
+        registro: 3,
+        alquiler: 3,
+        empleado: 1,
+        entrega: "2023-07-06",
+        combustible: 45.00,
+        kilometraje: 2200,
     },
     {
-        _id: 4,
-        ID_Registro: 4,
-        ID_Alquiler_id: 4,
-        ID_Empleado_id: 4,
-        Fecha_Entrega: "2023-12-15",
-        Combustible_Entregado: 5,
-        Kilometraje_Entregado: 20000,
+        registro: 4,
+        alquiler: 4,
+        empleado: 5,
+        entrega: "2023-07-08",
+        combustible: 50.00,
+        kilometraje: 2400,
     },
     {
-        _id: 5,
-        ID_Registro: 5,
-        ID_Alquiler_id: 5,
-        ID_Empleado_id: 5,
-        Fecha_Entrega: "2023-12-15",
-        Combustible_Entregado: 5,
-        Kilometraje_Entregado: 39643,
+        registro: 5,
+        alquiler: 5,
+        empleado: 2,
+        entrega: "2023-07-09",
+        combustible: 35.00,
+        kilometraje: 1900,
     }
 ]);
+
 use("db_prime_pepo");
 db.empleado.insertMany([
     {

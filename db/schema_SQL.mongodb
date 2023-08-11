@@ -7,6 +7,7 @@ db.createCollection("cliente", {
     validator: {
         $jsonSchema: {
             bsonType: "object",
+            additionalProperties:false,
             title: "cliente",
             required: ["cliente", "nombre", "apellido", "documento", "direccion", "numero"],
             properties: {
@@ -57,6 +58,7 @@ db.createCollection("empleado", {
         $jsonSchema: {
             bsonType: "object",
             title: "empleado",
+            additionalProperties:false,
             required: ["empleado", "nombre", "apellido", "documento", "direccion", "numero", "cargo"],
             properties: {
                 _id: {
@@ -89,7 +91,7 @@ db.createCollection("empleado", {
                 cargo: {
                     bsonType: "string",
                     enum: ["Gerente", "Vendedor", "Asistente"],
-                    description: `{"status": "402", "message": "Solo hay 3 cargos, Gerente, Vendedor Y Asistente, y debe de ser un string"}`
+                    description: `{"status": "402", "message": "Solo hay 3 cargos, Gerente, Vendedor Y Asistente. Debe de ser un string"}`
                 },
             }
         },
@@ -106,38 +108,39 @@ db.createCollection("automovil", {
         $jsonSchema: {
             bsonType: "object",
             title: "automovil",
-            required: ["ID_Automovil", "Marca", "Modelo", "Anio", "Tipo", "Capacidad", "Precio_Diario"],
+            additionalProperties:false,
+            required: ["automovil", "marca", "modelo", "anio", "tipo", "capacidad", "precio_diaro"],
             properties: {
                 _id: {
                     bsonType: 'objectId'
                 },
-                ID_Automovil: {
+                automovil: {
                     bsonType: "int",
-                    description: `{"status": "402", "message": "El ID_Automovil es obligatorio y debe ser un numero entero (int)"}`
+                    description: `{"status": "402", "message": "El parametro ID_Automovil es obligatorio y debe ser un numero entero (int)"}`
                 },
-                Marca: {
+                marca: {
                     bsonType: "string",
-                    description: `{"status": "402", "message": "La marca es obligatoria y debe ser un string"}`
+                    description: `{"status": "402", "message": "El parametro Marca_Auto es obligatoria y debe ser un string"}`
                 },
-                Modelo: {
+                modelo: {
                     bsonType: "string",
-                    description: `{"status": "402", "message": "El modelo es obligatorio y debe ser un string"}`
+                    description: `{"status": "402", "message": "El parametro Modelo_Auto es obligatorio y debe ser un string"}`
                 },
-                Anio: {
+                anio: {
                     bsonType: "int",
-                    description: `{"status": "402", "message": "El anio es obligatorio y debe ser un numero entero (int)"}`
+                    description: `{"status": "402", "message": "El parametro Anio_Auto es obligatorio y debe ser un numero entero (int)"}`
                 },
-                Tipo: {
+                tipo: {
                     bsonType: "string",
-                    description: `{"status": "402", "message": "El tipo es obligatorio y debe ser un string"}`
+                    description: `{"status": "402", "message": "El parametro Tipo_Auto es obligatorio y debe ser un string"}`
                 },
-                Capacidad: {
+                capacidad: {
                     bsonType: "int",
-                    description: `{"status": "402", "message": "La capacidad es obligatoria y debe ser un numero entero (int)"}`
+                    description: `{"status": "402", "message": "El parametro Capacidad_Auto es obligatoria y debe ser un numero entero (int)"}`
                 },
-                Precio_Diario: {
+                precio_diaro: {
                     bsonType: "number",
-                    description: `{"status": "402", "message": "El precio_diario es obligatorio y debe ser un numero"}`
+                    description: `{"status": "402", "message": "El parametro Precio_Por_Dia es obligatorio y debe ser un numero"}`
                 },
             }
         },
@@ -145,6 +148,7 @@ db.createCollection("automovil", {
 });
 
 /* Esquema de la coleccion de 'sucursal'. */
+use("db_prime_pepo");
 db.createCollection("sucursal", {
     capped: true,
     size: 1900,
@@ -153,32 +157,255 @@ db.createCollection("sucursal", {
     $jsonSchema: {
         bsonType: "object",
         title: "sucursal",
-        required: ["ID_Sucursal", "Nombre", "Direccion", "Telefono"],
+        additionalProperties:false,
+        required: ["sucursal_id", "nombre", "direccion", "telefono"],
         properties: {
             _id: {
                 bsonType: 'objectId'
             },
-            ID_Sucursal: {
+            sucursal_id: {
                 bsonType: "int",
-                minimum: 1,
-                maximum: 20,
-                description: `{"status": "402", "message": "El ID_Sucursal es obligatorio y debe ser un numero entero (int) entre 1 a 20"}`
+                description: `{"status": "402", "message": "El parametro ID_Sucursal es obligatorio y debe ser un numero entero (int)"}`
             },
-            Nombre: {
+            nombre: {
                 bsonType: "string",
-                pattern: "^[A-Za-z\\s]+$",
-                description: `{"status": "402", "message": "El Nombre es obligatorio y debe ser un string"}`
+                description: `{"status": "402", "message": "El parametro Nombre es obligatorio y debe ser un string"}`
             },
-            Direccion: {
+            direccion: {
                 bsonType: "string",
-                pattern: "^[a-zA-Z0-9áéíóúÁÉÍÓÚñÑüÜ,.#@\\s-]+$",
-                description: `{"status": "402", "message": "La Direccion es obligatoria y debe ser un string"}`
+                description: `{"status": "402", "message": "El parametro Direccion es obligatoria y debe ser un string"}`
             },
-            Telefono: {
+            telefono: {
                 bsonType: "string",
-                pattern: "^[a-zA-Z0-9áéíóúÁÉÍÓÚñÑüÜ,.#@\\s-]+$",
-                description: `{"status": "402", "message": "Debe informar el campo telefono y este debe ser un string"}`
+                description: `{"status": "402", "message": "El parametro Telefono es obligatorio y este debe ser un string"}`
             },
+        },
+    },
+    },
+});
+
+/* Esquema de la coleccion de 'sucursal_automovil'. */
+use("db_prime_pepo");
+db.createCollection("sucursal_automovil", {
+    capped: true,
+    size: 1900,
+    max: 5,
+    validator: {
+    $jsonSchema: {
+        bsonType: "object",
+        additionalProperties:false,
+        title: "sucursal_automovil",
+        required: ["sucursal", "automovil", "cantidad_autos"],
+        properties: {
+            _id: {
+                bsonType: 'objectId'
+            },
+            sucursal: {
+                bsonType: "int",
+                description: `{"status": "402", "message": "El parametro ID_Sucursal_id es oblicagorio y debe ser un numero entero (int)."}`
+            },
+            automovil: {
+                bsonType: "int",
+                description: `{"status": "402", "message": "El parametro ID_Automovil_id es oblicagorio y debe ser un numero entero (int)."}`
+            },
+            cantidad_autos: {
+                bsonType: "int",
+                description: `{"status": "402", "message": "El parametro Cantidad_Disponible es oblicagorio y debe ser un numero entero (int)."}`
+            }
+        },
+    },
+    },
+});
+
+/* Esquema de la coleccion de 'reserva'. */
+use("db_prime_pepo");
+db.createCollection("reserva", {
+    capped: true,
+    size: 1900,
+    max: 5,
+    validator: {
+    $jsonSchema: {
+        bsonType: "object",
+        additionalProperties:false,
+        title: "reserva",
+        required: ["reserva", "cliente", "automovil", "reserva_fecha", "inicio","fin","estado"],
+        properties: {
+            _id: {
+                bsonType: 'objectId'
+            },
+            reserva: {
+                bsonType: "int",
+                description: `{"status": "402", "message": "El parametro ID_Reserva es oblicagorio y debe ser un numero entero (int)."}`
+            },
+            cliente: {
+                bsonType: "int",
+                description: `{"status": "402", "message": "El parametro ID_Cliente_id es oblicagorio y debe ser un numero entero (int)."}`
+            },
+            automovil: {
+                bsonType: "int",
+                description: `{"status": "402", "message": "El parametro ID_Automovil_id es oblicagorio y debe ser un numero entero (int)."}`
+            },
+            reserva_fecha: {
+                bsonType: "string",
+                description: `{"status": "402", "message": "El parametro Fecha_Reserva es oblicagorio y debe ser un string"}`
+            },
+            inicio: {
+                bsonType: "string",
+                description: `{"status": "402", "message": "El parametro Fecha_Inicio es oblicagorio y debe ser un string"}`
+            },
+            fin: {
+                bsonType: "string",
+                description: `{"status": "402", "message": "El parametro Fecha_Fin es oblicagorio y debe ser un string"}`
+            },
+            estado: {
+                bsonType: "string",
+                enum : ["Pendiente", "Confirmada", "Disponible", "Activo"],
+                description: `{"status": "402", "message": "Para el parametro Estado_Reserva solo hay 4 opciones: Pendiente, Confirmada, Disponible, Activo. Tiene que ser un string"}`
+            }
+        },
+    },
+    },
+});
+
+/* Esquema de la coleccion de 'alquiler'. */
+use("db_prime_pepo");
+db.createCollection("alquiler", {
+    capped: true,
+    size: 1900,
+    max: 5,
+    validator: {
+    $jsonSchema: {
+        bsonType: "object",
+        additionalProperties:false,
+        title: "alquiler",
+        required: ["alquiler", "cliente", "automovil", "inicio","fin","costo","estado"],
+        properties: {
+            _id: {
+                bsonType: 'objectId'
+            },
+            alquiler: {
+                bsonType: "int",
+                description: `{"status": "402", "message": "El parametro ID_Alquiler es oblicagorio y debe ser un numero entero (int)."}`
+            },
+            cliente: {
+                bsonType: "int",
+                description: `{"status": "402", "message": "El parametro ID_Cliente_id es oblicagorio y debe ser un numero entero (int)."}`
+            },
+            automovil: {
+                bsonType: "int",
+                description: `{"status": "402", "message": "El parametro ID_Automovil_id es oblicagorio y debe ser un numero entero (int)."}`
+            },
+            inicio: {
+                bsonType: "string",
+                description: `{"status": "402", "message": "El parametro Fecha_Inicio es oblicagorio y debe ser string"}`
+            },
+            fin: {
+                bsonType: "string",
+                description: `{"status": "402", "message": "El parametro Fecha_Fin es oblicagorio y debe ser string"}`
+            },
+            costo: {
+                bsonType: "number",
+                description: `{"status": "402", "message": "El parametro Costo_Total es oblicagorio y debe ser un numero."}`
+            },
+            estado: {
+                bsonType: "string",
+                enum : ["Pendiente", "Confirmada", "Disponible", "Activo"],
+                description: `{"status": "402", "message": "Para el parametro Estado_Alquiler solo hay 4 opciones: Pendiente, Confirmada, Disponible, Activo. Tiene que ser un string"}`
+            }
+        },
+    },
+    },
+});
+
+/* Esquema de la coleccion de 'registro_devolucion'. */
+use("db_prime_pepo");
+db.createCollection("registro_devolucion", {
+    capped: true,
+    size: 1900,
+    max: 5,
+    validator: {
+    $jsonSchema: {
+        bsonType: "object",
+        additionalProperties:false,
+        title: "registro_devolucion",
+        required: ["registro", "alquiler", "empleado", "devolucion", "combustible", "kilometraje", "monto"],
+        properties: {
+            _id: {
+                bsonType: 'objectId'
+            },
+            registro: {
+                bsonType: "int",
+                description: `{"status": "402", "message": "El parametro ID_Registro es obligatorio y debe ser un numero entero (int)."}`
+            },
+            alquiler: {
+                bsonType: "int",
+                description: `{"status": "402", "message": "El parametro ID_Alquiler_id es obligatorio y debe ser un numero entero (int)."}`
+            },
+            empleado: {
+                bsonType: "int",
+                description: `{"status": "402", "message": "El parametro ID_Empleado_id es obligatorio y debe ser un numero entero (int)."}`
+            },
+            devolucion: {
+                bsonType: "string",
+                description: `{"status": "402", "message": "El parametro Fecha_Devolucion es obligatorio y este debe ser un string."}`
+            },
+            combustible: {
+                bsonType: "number",
+                description: `{"status": "402", "message": "El parametro Combustible_Devuelto es obligatorio y debe ser un numero."}`
+            },
+            kilometraje: {
+                bsonType: "int",
+                description: `{"status": "402", "message": "El parametro Kilometraje_Devuelto es obligatorio y debe ser un numero entero (int)."}`
+            },
+            monto: {
+                bsonType: "number",
+                description: `{"status": "402", "message": "El parametro Monto_Adicional es obligatorio y debe ser un numero."}`
+            }
+        },
+    },
+    },
+});
+
+/* Esquema de la coleccion de 'registro_devregistro_entregaolucion'. */
+use("db_prime_pepo");
+db.createCollection("registro_entrega", {
+    capped: true,
+    size: 1900,
+    max: 5,
+    validator: {
+    $jsonSchema: {
+        bsonType: "object",
+        additionalProperties:false,
+        title: "registro_entrega",
+        required: ["registro", "alquiler", "empleado", "entrega","combustible","kilometraje"],
+        properties: {
+            _id: {
+                bsonType: 'objectId'
+            },
+            registro: {
+                bsonType: "int",
+                description: "El campo ID_Registro debe ser un número y estar comprendido entre 0 y 20"
+            },
+            alquiler: {
+                bsonType: "int",
+                description: "El campo ID_Alquiler_id debe ser un número y estar comprendido entre 0 y 20"
+            },
+            empleado: {
+                bsonType: "int",
+                description: "El campo ID_Empleado_id debe ser un número y estar comprendido entre 0 y 20"
+            },
+            entrega: {
+                bsonType: "string",
+                description: "Debe informar el campo Fecha_Entrega y este debe ser un string",
+            },
+            combustible: {
+                bsonType: "number",
+                description: "El campo Combustible_Entregado debe ser un número"
+            },
+            kilometraje: {
+                bsonType: "int",
+                description: "El campo Kilometraje_Entregado debe ser un número"
+            }
         },
     },
     },
