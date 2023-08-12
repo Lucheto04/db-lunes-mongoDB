@@ -2,6 +2,7 @@ import { plainToClass, classToPlain } from 'class-transformer';
 import dotenv from 'dotenv';
 import { Cliente } from '../routes/storage/clientes.js';
 import { Empleado } from '../routes/storage/empleados.js';
+import { Auto } from '../routes/storage/automoviles.js';
 import {Router} from 'express';
 import { SignJWT, jwtVerify } from 'jose';
 dotenv.config('../');
@@ -10,8 +11,9 @@ const appToken = Router();
 const appVerify = Router();
 const createInstance = (className) => {
     const classMap = {
-      'cliente': Cliente,
-      'empleados': Empleado
+      'clientes': Cliente,
+      'empleados': Empleado,
+      'autos': Auto
     };
     const Class = classMap[className];
     return (Class) ? plainToClass(Class, {}, { ignoreDecorators: true }) : undefined;
