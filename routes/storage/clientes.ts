@@ -4,7 +4,7 @@ import { IsDefined } from 'class-validator';
 export class Cliente {
 
     @Expose({ name: 'ID_Cliente' })
-    @IsDefined({ message: () => { throw { status: 422, message: `El parametro ID_Cliente es obligatorio y debe ser un string` } } })
+    @IsDefined({ message: () => { throw { status: 422, message: `El parametro ID_Cliente es obligatorio y debe ser un numero entero (int).`}}})
     cliente: number;
 
     @Expose({ name: 'Nombre_Cliente' })

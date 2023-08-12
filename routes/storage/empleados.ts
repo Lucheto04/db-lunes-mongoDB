@@ -3,7 +3,7 @@ import { IsDefined } from 'class-validator';
 
 export class Empleado {
     @Expose({ name: 'ID_Empleado' })
-    @IsDefined({ message: () => { throw { status: 422, message: `El parametro ID_Empleado es obligatorio y debe ser un string` } } })
+    @IsDefined({ message: () => { throw { status: 422, message: `El parametro ID_Empleado es obligatorio y debe ser un numero entero (int).`}}})
     empleado: number;
 
     @Expose({ name: 'Nombre_Empleado' })
@@ -27,7 +27,7 @@ export class Empleado {
     numero: string;
 
     @Expose({ name: 'Cargo_Empleado' })
-    @IsDefined({ message: () => { throw { status: 422, message: `El parametro Cargo_Empleado es obligatorio` } } })
+    @IsDefined({ message: () => { throw { status: 422, message: `El parametro Cargo_Empleado es obligatorio y debe ser un string` } } })
     cargo: string;
 
     constructor(data: Partial<Empleado>) {
