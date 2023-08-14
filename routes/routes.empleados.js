@@ -7,28 +7,27 @@ let appEmpleado = Router();
 let db = await coneccion();
 let empleado = db.collection("empleado");
 
-appEmpleado.get('/', queryEmpleado(), appMiddlewareEmpleadoVerify, async(req, res) => {
+/* 7. Listar los empleados con el cargo de "Vendedor". */
+appEmpleado.get('/vendedores', queryEmpleado(), appMiddlewareEmpleadoVerify, async(req, res) => {
     if(!req.rateLimit) return;
 
-    // let {id} = req.body
-    // { "_id": new ObjectId(id)} !PARA BUSCQUEDA ESPECIFICA POR '_id'.
-
-    let result = await empleado.find().toArray();
+    let result = await empleado.find({cargo: {$eq:"Vendedor"}}).toArray();
     res.send(result)
 });
 
-appEmpleado.post('/', queryEmpleado(), appMiddlewareEmpleadoVerify, appDTOEmpleado, async(req, res) => {
-    let result;
-    try {
-        let result = await empleado.insertOne(req.body);
-        res.status(201).send(result);
-    } catch (error) {
-        if (error)
-        // result = error.errInfo.details.schemaRulesNotSatisfied[0].additionalProperties;
-        // res.status(406).send(JSON.stringify({invalidProperties: result, message: "Estos campos no son validos, eliminelos"}))
-        result = JSON.parse(error.errInfo.details.schemaRulesNotSatisfied[0].propertiesNotSatisfied[0].description);
-        res.status(402).send(result);
-    }
-})
+/* 14. Mostrar los empleados con cargo de "Gerente" o "Asistente". */
+appEmpleado.get('/cargo', queryEmpleado(), appMiddlewareEmpleadoVerify, async(req, res) => {
+    if(!req.rateLimit) return;
+
+    let result = await empleado.find(
+        {
+            $or: [{cargo: "Gerente"}, {cargo: "Asistente"}]
+        },
+        {
+            _id: 0
+        }
+    ).toArray();
+    res.send(result)
+});
 
 export default appEmpleado;
