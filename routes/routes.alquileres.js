@@ -10,27 +10,38 @@ let alquiler = db.collection("alquiler");
 appAlquiler.get('/', queryAlquiler(), appMiddlewareAlquilerVerify, async(req, res) => {
     if(!req.rateLimit) return;
 
-    // let {id} = req.body
-    // { "_id": new ObjectId(id)} !PARA BUSCQUEDA ESPECIFICA POR '_id'.
-
     let result = await alquiler.find().toArray();
-    res.send(result)
+    res.json(result)
 });
 
-appAlquiler.post('/', queryAlquiler(), appMiddlewareAlquilerVerify, appDTOAlquiler, async(req, res) => {
-    let result;
-    try {
-        let result = await alquiler.insertOne(req.body);
-        res.status(201).send(result);
-    } catch (error) {
-        if (error)
-        // result = error.errInfo.details.schemaRulesNotSatisfied[0].additionalProperties;
-        // res.status(406).send(JSON.stringify({invalidProperties: result, message: "Estos campos no son validos, eliminelos"}))
+/* 4. Listar todos los alquileres activos junto con los datos de los clientes relacionados. */
+appAlquiler.get('/activos', queryAlquiler(), appMiddlewareAlquilerVerify, async(req, res) => {
+    if(!req.rateLimit) return;
+    let result = await alquiler.aggregate([
+        {    
+            $lookup:{
+                from: "cliente",
+                localField: "cliente",
+                foreignField: "cliente",
+                as: "fk_alquiler_cliente"
+            }
+        },
+        {
+            $match: {
+                estado: "Activo"
+            }
+        },
+        {
+            $project: {
+                "_id": 0,    
+                "inicio": 0,
+                "fin": 0,
+                "fk_alquiler_cliente._id": 0
+            }
+        }
+    ]).toArray();
 
-        result = JSON.parse(error.errInfo.details.schemaRulesNotSatisfied[0].propertiesNotSatisfied[0].description);
-        res.status(402).send(result);
-    }
-})
-
+    res.send(result)
+});
 
 export default appAlquiler;
