@@ -8,7 +8,7 @@ export class Auto {
     automovil: number;
 
     @Expose({ name: 'Marca_Auto' })
-    @IsDefined({ message: () => { throw { status: 422, message: `El parametro Marca_Auto es obligatorio y debe ser un string` } } })
+    @IsDefined({ message: () => { throw { status: 422, message: `El parametro Marca_Auto es obligatorio y debe ser un string` }}})
     marca: string;
 
     @Expose({ name: 'Modelo_Auto' })

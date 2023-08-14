@@ -3,6 +3,7 @@ import dotenv from 'dotenv';
 import { Cliente } from '../routes/storage/clientes.js';
 import { Empleado } from '../routes/storage/empleados.js';
 import { Auto } from '../routes/storage/automoviles.js';
+import { Alquiler } from '../routes/storage/alquileres.js';
 import {Router} from 'express';
 import { SignJWT, jwtVerify } from 'jose';
 dotenv.config('../');
@@ -13,7 +14,8 @@ const createInstance = (className) => {
     const classMap = {
       'clientes': Cliente,
       'empleados': Empleado,
-      'autos': Auto
+      'autos': Auto,
+      'alquileres': Alquiler
     };
     const Class = classMap[className];
     return (Class) ? plainToClass(Class, {}, { ignoreDecorators: true }) : undefined;

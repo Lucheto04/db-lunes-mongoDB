@@ -1,27 +1,26 @@
 import { coneccion } from "../db/atlas.js";
-import { queryAuto } from "../limit/config.js";
-import { appMiddlewareAutoVerify, appDTOAuto } from "../middleware/middle.autos.js";
+import { queryAlquiler } from "../limit/config.js";
+import { appMiddlewareAlquilerVerify, appDTOAlquiler } from "../middleware/middle.alquileres.js";
 import { Router } from "express";
-let appAuto = Router();
+let appAlquiler = Router();
 
 let db = await coneccion();
-let auto = db.collection("automovil");
+let alquiler = db.collection("alquiler");
 
-appAuto.get('/', queryAuto(), appMiddlewareAutoVerify, async(req, res) => {
+appAlquiler.get('/', queryAlquiler(), appMiddlewareAlquilerVerify, async(req, res) => {
     if(!req.rateLimit) return;
 
     // let {id} = req.body
     // { "_id": new ObjectId(id)} !PARA BUSCQUEDA ESPECIFICA POR '_id'.
 
-    let result = await auto.find().toArray();
+    let result = await alquiler.find().toArray();
     res.send(result)
 });
 
-
-appAuto.post('/', queryAuto(), appMiddlewareAutoVerify, appDTOAuto, async(req, res) => {
+appAlquiler.post('/', queryAlquiler(), appMiddlewareAlquilerVerify, appDTOAlquiler, async(req, res) => {
     let result;
     try {
-        let result = await cliente.insertOne(req.body);
+        let result = await alquiler.insertOne(req.body);
         res.status(201).send(result);
     } catch (error) {
         if (error)
@@ -34,5 +33,4 @@ appAuto.post('/', queryAuto(), appMiddlewareAutoVerify, appDTOAuto, async(req, r
 })
 
 
-
-export default appAuto;
+export default appAlquiler;
