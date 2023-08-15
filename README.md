@@ -39,3 +39,51 @@ http://127.10.10.10:7500/token/autos
 http://127.10.10.10:7500/token/clientes
 http://127.10.10.10:7500/token/empleados
 ```
+
+### Alquileres 
+
+Aquí te voy a listar los endpoints que puedes manipular con el token de `alquileres`.
+
+```
+http://127.10.10.10:7500/alquileres/activos
+http://127.10.10.10:7500/alquileres/totales
+http://127.10.10.10:7500/alquileres/inicio
+http://127.10.10.10:7500/alquileres/:id
+http://127.10.10.10:7500/alquileres/total/:id
+http://127.10.10.10:7500/alquileres/fecha/filtrada
+```
+
+### Autos
+
+Aquí te voy a listar los endpoints que puedes manipular con el token de `autos`.
+
+```
+http://127.10.10.10:7500/autos
+http://127.10.10.10:7500/autos/disponibles
+http://127.10.10.10:7500/autos/camionetas
+http://127.10.10.10:7500/autos/ordenados
+http://127.10.10.10:7500/autos/total/sucursales
+http://127.10.10.10:7500/autos/cantidad
+```
+
+### Clientes
+
+Aquí te voy a listar los endpoints que puedes manipular con el token de `clientes`.
+
+```
+http://127.10.10.10:7500/clientes
+http://127.10.10.10:7500/clientes/reservaron
+http://127.10.10.10:7500/clientes/pendientes
+http://127.10.10.10:7500/clientes/:DNI
+http://127.10.10.10:7500/clientes/pendiente/:id
+http://127.10.10.10:7500/clientes/reserva/:id
+```
+
+### Empleados
+
+Aquí te voy a listar los endpoints que puedes manipular con el token de `empleados`.
+
+```
+http://127.10.10.10:7500/empleados/vendedores
+http://127.10.10.10:7500/empleados/cargo
+```

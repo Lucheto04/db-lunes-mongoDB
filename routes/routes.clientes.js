@@ -11,7 +11,6 @@ let reserva = db.collection("reserva");
 /* 2. Mostrar todos los clientes registrados en la base de datos.*/
 appCliente.get('/', queryCliente(), appMiddlewareClienteVerify, async(req, res) => {
     if(!req.rateLimit) return;
-
     let result = await cliente.find().toArray();
     res.send(result)
 });

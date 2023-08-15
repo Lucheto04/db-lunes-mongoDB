@@ -10,7 +10,6 @@ let empleado = db.collection("empleado");
 /* 7. Listar los empleados con el cargo de "Vendedor". */
 appEmpleado.get('/vendedores', queryEmpleado(), appMiddlewareEmpleadoVerify, async(req, res) => {
     if(!req.rateLimit) return;
-
     let result = await empleado.find({cargo: {$eq:"Vendedor"}}).toArray();
     res.send(result)
 });
@@ -18,7 +17,6 @@ appEmpleado.get('/vendedores', queryEmpleado(), appMiddlewareEmpleadoVerify, asy
 /* 14. Mostrar los empleados con cargo de "Gerente" o "Asistente". */
 appEmpleado.get('/cargo', queryEmpleado(), appMiddlewareEmpleadoVerify, async(req, res) => {
     if(!req.rateLimit) return;
-
     let result = await empleado.find(
         {
             $or: [{cargo: "Gerente"}, {cargo: "Asistente"}]

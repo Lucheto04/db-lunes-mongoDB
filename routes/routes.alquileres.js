@@ -33,12 +33,11 @@ appAlquiler.get('/activos', queryAlquiler(), appMiddlewareAlquilerVerify, async(
             }
         }
     ]).toArray();
-
     res.send(result)
 });
 
 /* 18. Obtener la cantidad total de alquileres registrados en la base de datos */
-appAlquiler.get('/totales/', queryAlquiler(), appMiddlewareAlquilerVerify, async(req, res) => {
+appAlquiler.get('/totales', queryAlquiler(), appMiddlewareAlquilerVerify, async(req, res) => {
     if(!req.rateLimit) return;
     let id = parseInt(req.params.id) 
     let result = await alquiler.aggregate([
@@ -49,7 +48,6 @@ appAlquiler.get('/totales/', queryAlquiler(), appMiddlewareAlquilerVerify, async
             }
         }
     ]).toArray();
-
     res.send(result)
 });
 
@@ -61,7 +59,6 @@ appAlquiler.get('/inicio', queryAlquiler(), appMiddlewareAlquilerVerify, async(r
             inicio: {$eq: "2023-07-05"}
         }  
     ).toArray();
-
     res.send(result)
 });
 
@@ -90,7 +87,6 @@ appAlquiler.get('/:id', queryAlquiler(), appMiddlewareAlquilerVerify, async(req,
             }
         }
     ]).toArray();
-
     res.send(result)
 });
 
@@ -112,7 +108,6 @@ appAlquiler.get('/total/:id', queryAlquiler(), appMiddlewareAlquilerVerify, asyn
             estado: 0  
         }
     ).toArray();
-
     res.send(result)
 });
 
@@ -131,7 +126,6 @@ appAlquiler.get('/fecha/filtrada', queryAlquiler(), appMiddlewareAlquilerVerify,
             _id: 0
         }
     ).toArray();
-
     res.send(result)
 });
 export default appAlquiler;

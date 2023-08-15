@@ -12,7 +12,6 @@ let auto_sucursal = db.collection("sucursal_automovil");
 /* 3. Obtener todos los automóviles disponibles para alquiler */
 appAuto.get('/', queryAuto(), appMiddlewareAutoVerify, async(req, res) => {
     if(!req.rateLimit) return;
-
     let result = await auto.find().toArray();
     res.send(result)
 });
@@ -21,7 +20,6 @@ appAuto.get('/', queryAuto(), appMiddlewareAutoVerify, async(req, res) => {
 sucursal. */
 appAuto.get('/disponibles', queryAuto(), appMiddlewareAutoVerify, async(req, res) => {
     if(!req.rateLimit) return;
-
     let result = await auto_sucursal.aggregate([
         {    
             $lookup:{
@@ -50,7 +48,6 @@ appAuto.get('/disponibles', queryAuto(), appMiddlewareAutoVerify, async(req, res
 personas. */
 appAuto.get('/camionetas', queryAuto(), appMiddlewareAutoVerify, async(req, res) => {
     if(!req.rateLimit) return;
-
     let result = await auto.find(
         {
             capacidad: {$gt :5}
@@ -62,7 +59,6 @@ appAuto.get('/camionetas', queryAuto(), appMiddlewareAutoVerify, async(req, res)
 /* 16. Listar todos los automóviles ordenados por marca y modelo. */
 appAuto.get('/ordenados', queryAuto(), appMiddlewareAutoVerify, async(req, res) => {
     if(!req.rateLimit) return;
-
     let result = await auto.aggregate([
         {
             $group: {
@@ -86,7 +82,6 @@ appAuto.get('/ordenados', queryAuto(), appMiddlewareAutoVerify, async(req, res) 
 /* 17. Mostrar la cantidad total de automóviles en cada sucursal junto con su dirección. */
 appAuto.get('/total/sucursales', queryAuto(), appMiddlewareAutoVerify, async(req, res) => {
     if(!req.rateLimit) return;
-
     let result = await sucursal.aggregate([
         {
             $lookup: {
@@ -134,7 +129,6 @@ appAuto.get('/total/sucursales', queryAuto(), appMiddlewareAutoVerify, async(req
 estén disponibles.*/
 appAuto.get('/cantidad', queryAuto(), appMiddlewareAutoVerify, async(req, res) => {
     if(!req.rateLimit) return;
-
     let result = await auto.find(
         {
             capacidad: {$eq: 5}
