@@ -8,3 +8,16 @@
 ### Dependencias implementadas
 
 <img src="./img/dependencias.png" style="zoom:45">
+
+
+### Instrucciones
+
+Para usar este proyecto primero tienes que usar la version 18.16.1 de nvm.
+Una vez tengas la version en uso, por la terminal debes mandar el comando `npm i`
+
+Lo siguiente seria la configuracion de las variables de entorno, puedes eliminar la parte `.example` del archivo .env.example y luego llenas los campos vacios con sus datos correspondientes.
+
+Ahora vamos a iniciar la transcompilacion del DTO con el comando `npm run tsc`, despues vamos a arrancar nodemon en una terminal diferente con el comando `npm start`. 
+Recuerda que para que funcione correctamente debes tener las 2 terminales abiertas al mismo tiempo.
+
+
